@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:orientation="horizontal">
+
+
+    <!--Receiver Layout-->
+    <LinearLayout
+        android:id="@+id/receiverLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/profile"
+
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/message_receiver_design"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:id="@+id/receiverText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/dummyString"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/receiverTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11:10 PM"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/receiverText"
+                android:layout_alignParentEnd="true"
+                android:textColor="#AFB3BC"
+                android:textSize="16sp"
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <!--Sender layout-->
+    <LinearLayout
+        android:id="@+id/senderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/p"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/profile"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/p"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/message_sender_design"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/senderText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/dummyString"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/senderTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:10 PM"
+                    android:textColor="#AFB3BC"
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+

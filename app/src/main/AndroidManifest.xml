@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aariyan.imo_template">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/imo_icon"
@@ -9,14 +12,20 @@
         android:roundIcon="@drawable/imo_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.IMO_Template">
-        <activity android:name=".AboutActivity"></activity>
+        <activity
+            android:name=".QuizActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Authentication.OTP_verification"
+            android:exported="true" />
+        <activity android:name=".AboutActivity" />
         <activity android:name=".PrivacyActivity" />
         <activity android:name=".NotificationActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".MessagingActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".CallActivity" />
-        <activity android:name=".Authentication" />
+        <activity android:name=".Authentication.Authentication" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Splash_screen">
             <intent-filter>

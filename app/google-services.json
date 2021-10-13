@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "428867601682",
+    "firebase_url": "https://imo-9faba-default-rtdb.firebaseio.com",
+    "project_id": "imo-9faba",
+    "storage_bucket": "imo-9faba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428867601682:android:46a0dc02bd36f7c9315fcb",
+        "android_client_info": {
+          "package_name": "com.aariyan.imo_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428867601682-l5pqvqr6ul4jh060t8ons8l3ga6si7jl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9e4q1RO973FGJvEUuOla39lstqes3_jI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428867601682-l5pqvqr6ul4jh060t8ons8l3ga6si7jl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428867601682:android:7066633e31342aca315fcb",
+        "android_client_info": {
+          "package_name": "com.aariyan.imo_template"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428867601682-l5pqvqr6ul4jh060t8ons8l3ga6si7jl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9e4q1RO973FGJvEUuOla39lstqes3_jI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428867601682-l5pqvqr6ul4jh060t8ons8l3ga6si7jl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

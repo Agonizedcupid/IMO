@@ -5,10 +5,18 @@
       <map>
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/add_icon.xml" value="0.2890625" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2890625" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_authentication.xml" value="0.27291666666666664" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_otp_verification.xml" value="0.27291666666666664" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_quiz.xml" value="0.25885416666666666" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/dialog_layout.xml" value="0.245018115942029" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_question.xml" value="0.2557291666666667" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_quiz_add.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_quiz_home.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_quiz_profile.xml" value="0.25226449275362317" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/fragment_quiz_sub_category.xml" value="0.27291666666666664" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/single_category_layout.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Aariyan/Documents/Projects/Android/IMO_Template/app/src/main/res/drawable/edit_text_back.xml" value="0.27870370370370373" />
         <entry key="..\:/Users/Aariyan/Documents/Projects/Android/IMO_Template/app/src/main/res/layout/activity_authentication.xml" value="0.27291666666666664" />
         <entry key="..\:/Users/Aariyan/Documents/Projects/Android/IMO_Template/app/src/main/res/layout/activity_main.xml" value="0.27291666666666664" />

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.QuestionFragment">
+
+
+    <!--Toolbar start-->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_500">
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/back_white_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Question"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+    <!--Toolbar end-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
+
+        <TextView
+            android:id="@+id/questionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Q: What's Your Name?"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/answerOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option One"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                />
+
+            <RadioButton
+                android:id="@+id/answerTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option Two"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                />
+
+            <RadioButton
+                android:id="@+id/answerThree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option Three"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                />
+
+            <RadioButton
+                android:id="@+id/answerFour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Option Four"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                />
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            >
+
+            <Button
+                android:text="Close"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/closeQuizBtn"
+                android:layout_marginEnd="15dp"
+                />
+
+            <Button
+                android:text="Next"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/nextBtn"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/answerIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/cross_icon_red" />
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/rightAnswerLayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right Answer"
+            android:textColor="@color/purple_500"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:id="@+id/rightAnswerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right Answer"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

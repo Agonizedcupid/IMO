@@ -15,9 +15,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.aariyan.imo_template.Adapter.CategoryAdapter;
+import com.aariyan.imo_template.Adapter.SubCategoryAdapter;
 import com.aariyan.imo_template.Constant.Constant;
-import com.aariyan.imo_template.Model.CategoryModel;
+import com.aariyan.imo_template.Model.SubCategoryModel;
 import com.aariyan.imo_template.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,21 +26,25 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuizHomeFragment extends Fragment {
+public class QuizSubCategoryFragment extends Fragment {
+
+    private String id = "";
 
     private ImageView backBtn,addCategory;
 
     private RecyclerView recyclerView;
-    private ProgressBar progressBar;
+    private static ProgressBar progressBar;
 
-    private List<CategoryModel> list = new ArrayList<>();
+    private List<SubCategoryModel> list = new ArrayList<>();
+
+    private Context context;
 
     private View root;
 
-    private Context context;
-    public QuizHomeFragment() {
+    public QuizSubCategoryFragment() {
         // Required empty public constructor
     }
+
 
 
     @Override
@@ -53,47 +57,49 @@ public class QuizHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_quiz_home, container, false);
-        context = requireContext();
+        root = inflater.inflate(R.layout.fragment_quiz_sub_category, container, false);
+        id = getArguments().getString("id");
         initUI();
         return root;
     }
 
     private void initUI() {
+        backBtn = root.findViewById(R.id.backBtn);
+        ///backBtn.setOnClickListener(view -> onBackPressed());
+
+
 
         recyclerView = root.findViewById(R.id.categoryRecyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(context,2));
 
         progressBar = root.findViewById(R.id.progressbar);
 
         //Load Category
-        loadCategory();
+        loadSubCategory();
     }
 
-    private void loadCategory() {
-        Constant.categoryRef.addValueEventListener(new ValueEventListener() {
+    public void loadSubCategory() {
+        Constant.subCategoryRef.orderByChild("parentId").equalTo(id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     list.clear();
-                    for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                        CategoryModel model = dataSnapshot.getValue(CategoryModel.class);
+                    for (DataSnapshot dataSnapshot:snapshot.getChildren()) {
+                        SubCategoryModel model = dataSnapshot.getValue(SubCategoryModel.class);
                         list.add(model);
                     }
-                    CategoryAdapter adapter = new CategoryAdapter(context,list);
+                    SubCategoryAdapter adapter = new SubCategoryAdapter(requireContext(),list,requireActivity());
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
-
                 } else {
-                    Toast.makeText(context, "No Category Found!", Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
+                    Toast.makeText(requireContext(), "No data found!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
             }
         });

@@ -11,10 +11,13 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aariyan.imo_template.Constant.Constant;
 import com.aariyan.imo_template.MainActivity;
+import com.aariyan.imo_template.Model.UserModel;
 import com.aariyan.imo_template.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,12 +28,14 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 public class OTP_verification extends AppCompatActivity {
 
-    private static String name, email, phone, password, otp, givenOTP;
+    private static String phoneNumber, otp, givenOTP;
     private EditText firstCode, secondCode, thirdCode, fourthCode, fifthCode, sixthCode;
     private TextView resendCode;
     private Button verificationOTP;
 
     private FirebaseAuth userAuth;
+
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +45,15 @@ public class OTP_verification extends AppCompatActivity {
 
         if (getIntent() != null) {
             otp = getIntent().getStringExtra("otp");
+            phoneNumber = getIntent().getStringExtra("phone");
         }
 
         initUI();
     }
 
     private void initUI() {
+        progressBar = findViewById(R.id.progressbar);
+
         firstCode = findViewById(R.id.firstCode);
         secondCode = findViewById(R.id.secondCode);
         thirdCode = findViewById(R.id.thirdCode);
@@ -59,7 +67,9 @@ public class OTP_verification extends AppCompatActivity {
         verificationOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 validation();
+                verificationOTP.setEnabled(false);
             }
         });
 
@@ -203,17 +213,33 @@ public class OTP_verification extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            saveDataOnDatabase();
                             startActivity(new Intent(OTP_verification.this, MainActivity.class));
                             finish();
+                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
 
             } else {
                 Toast.makeText(this, "not matched", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
             }
         } else {
             Toast.makeText(this, "Please enter the OTP", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
         }
+    }
+
+    private void saveDataOnDatabase() {
+        UserModel model = new UserModel(
+                userAuth.getCurrentUser().getUid(),
+                "",
+                phoneNumber,
+                "",
+                "100"
+        );
+
+        Constant.userRef.child(userAuth.getCurrentUser().getUid()).setValue(model);
     }
 }

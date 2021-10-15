@@ -1,14 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.QuizProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_500"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/pointTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edit_text_back"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="5dp"
+        android:text="You Have 100 Points"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/pointTextBox"
+        android:layout_margin="25dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/purple_500"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            />
+
+        <TextView
+            android:id="@+id/profilePhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingStart="15dp"
+            android:text="Phone Number"
+            android:textColor="@android:color/black"
+            android:background="@drawable/edit_text_back"
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/purple_500"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            />
+
+        <EditText
+            android:id="@+id/profileName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_back"
+            android:hint="Your Name"
+            android:paddingStart="15dp"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@android:color/black"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profession"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/purple_500"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            />
+
+
+        <EditText
+            android:id="@+id/profileProfession"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_back"
+            android:hint="Your Profession"
+            android:paddingStart="15dp"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@android:color/black"
+            />
+
+
+        <Button
+            android:id="@+id/updateProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Update Profile"
+            />
+
+    </LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressbar"
+        />
+
+</RelativeLayout>

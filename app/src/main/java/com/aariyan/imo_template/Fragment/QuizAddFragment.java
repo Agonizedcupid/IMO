@@ -15,13 +15,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aariyan.imo_template.Constant.Constant;
 import com.aariyan.imo_template.Model.CategoryModel;
 import com.aariyan.imo_template.Model.QuestionModel;
 import com.aariyan.imo_template.Model.SubCategoryModel;
+import com.aariyan.imo_template.Model.UserModel;
 import com.aariyan.imo_template.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,7 +48,7 @@ public class QuizAddFragment extends Fragment {
 
     private Spinner spinner, subCategorySpinner;
     private EditText categoryNameBox, subCategoryNameBox;
-    private DatabaseReference categoryRef, subCategoryRef,questionRef;
+    private DatabaseReference categoryRef, subCategoryRef, questionRef;
     private List<CategoryModel> list = new ArrayList<>();
     private List<SubCategoryModel> subCategoryList = new ArrayList<>();
     ArrayAdapter<CategoryModel> dataAdapter;
@@ -62,6 +65,9 @@ public class QuizAddFragment extends Fragment {
 
     private ProgressBar progressBar;
     private FirebaseAuth userAuth;
+
+    private RelativeLayout mainRelativeLayout;
+    private TextView warningText;
 
     public QuizAddFragment() {
         // Required empty public constructor
@@ -84,8 +90,39 @@ public class QuizAddFragment extends Fragment {
         subCategoryRef = FirebaseDatabase.getInstance().getReference().child("QUIZ").child("SubCategory");
         questionRef = FirebaseDatabase.getInstance().getReference().child("QUIZ").child("Questions");
         initUI();
+        checkPoints();
         loadCategorySpinner();
         return root;
+    }
+
+    private void checkPoints() {
+        Constant.userRef.orderByChild("userId").equalTo(userAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        UserModel model = dataSnapshot.getValue(UserModel.class);
+
+                        if (Integer.parseInt(model.getUserPoints()) > 0) {
+                            mainRelativeLayout.setVisibility(View.VISIBLE);
+                            warningText.setVisibility(View.GONE);
+                        } else {
+                            mainRelativeLayout.setVisibility(View.GONE);
+                            warningText.setVisibility(View.VISIBLE);
+                        }
+
+                        progressBar.setVisibility(View.GONE);
+                    }
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     private void loadCategorySpinner() {
@@ -187,6 +224,10 @@ public class QuizAddFragment extends Fragment {
     }
 
     private void initUI() {
+
+        mainRelativeLayout = root.findViewById(R.id.mainRelativeLayout);
+        warningText = root.findViewById(R.id.warningText);
+
         questionBox = root.findViewById(R.id.addQuestionBox);
         optionOneBox = root.findViewById(R.id.optionOneBox);
         optionTwoBox = root.findViewById(R.id.optionTwoBox);
@@ -218,7 +259,7 @@ public class QuizAddFragment extends Fragment {
 
     private void validation() {
         //checking category spinner items:
-        String newCategoryId,subcategoryId = "";
+        String newCategoryId, subcategoryId = "";
         if (categorySpinnerItemSelection.equals("New") && categorySpinnerItemId.equals("0")) {
             if (!TextUtils.isEmpty(categoryNameBox.getText().toString())) {
                 newCategoryId = generatingId();
@@ -361,10 +402,37 @@ public class QuizAddFragment extends Fragment {
                 optionTwoBox.setText("", TextView.BufferType.EDITABLE);
                 optionThreeBox.setText("", TextView.BufferType.EDITABLE);
                 optionFourBox.setText("", TextView.BufferType.EDITABLE);
+                updatePoints();
             }
         });
 
         progressBar.setVisibility(View.GONE);
+    }
+
+    private void updatePoints() {
+
+        Constant.userRef.orderByChild("userId").equalTo(userAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        UserModel model = dataSnapshot.getValue(UserModel.class);
+                        int points = Integer.parseInt(model.getUserPoints());
+                        points = points - 10;
+                        Constant.userRef.child(userAuth.getCurrentUser().getUid()).child("userPoints").setValue("" + points);
+
+                        //progressBar.setVisibility(View.GONE);
+                    }
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
     }
 
     //generate category id:

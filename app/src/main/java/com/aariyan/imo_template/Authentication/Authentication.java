@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.aariyan.imo_template.R;
@@ -41,6 +42,8 @@ public class Authentication extends AppCompatActivity {
     private String mVerificationId;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +72,7 @@ public class Authentication extends AppCompatActivity {
                 // Log.d(TAG, "onVerificationCompleted:" + credential);
 
                 //signInWithPhoneAuthCredential(credential);
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -84,7 +88,7 @@ public class Authentication extends AppCompatActivity {
                 } else if (e instanceof FirebaseTooManyRequestsException) {
                     // The SMS quota for the project has been exceeded
                 }
-
+                progressBar.setVisibility(View.GONE);
                 // Show a message and update the UI
             }
 
@@ -103,7 +107,9 @@ public class Authentication extends AppCompatActivity {
                 Toast.makeText(context, "OTP sent!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Authentication.this, OTP_verification.class);
                 intent.putExtra("otp", verificationId);
+                intent.putExtra("phone", countryCodePicker.getFullNumberWithPlus());
                 startActivity(intent);
+                progressBar.setVisibility(View.GONE);
 
             }
         };
@@ -111,6 +117,9 @@ public class Authentication extends AppCompatActivity {
 
 
     private void initUI() {
+
+        progressBar = findViewById(R.id.progressbar);
+
         sendOTP = findViewById(R.id.sendOTPButton);
         enterPhoneNumber = findViewById(R.id.enterPhoneNumber);
 
@@ -122,14 +131,16 @@ public class Authentication extends AppCompatActivity {
             @Override
             public void onCountrySelected() {
                 String number = countryCodePicker.getSelectedCountryCode();
-                Toast.makeText(context, "" + number, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context, "" + number, Toast.LENGTH_SHORT).show();
             }
         });
 
         sendOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 validation();
+                sendOTP.setEnabled(false);
             }
         });
     }

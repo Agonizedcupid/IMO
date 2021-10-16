@@ -9,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.aariyan.imo_template.Fragment.PaymentFragment;
 import com.aariyan.imo_template.Fragment.QuizAddFragment;
 import com.aariyan.imo_template.Fragment.QuizHomeFragment;
 import com.aariyan.imo_template.Fragment.QuizProfileFragment;
@@ -44,8 +45,10 @@ public class QuizActivity extends AppCompatActivity {
                     setFragment(new QuizHomeFragment());
                 } else if (tab.getPosition() == 1) {
                     setFragment(new QuizAddFragment());
-                } else if (tab.getPosition() == 2) {
+                } else if (tab.getPosition() == 3) {
                     setFragment(new QuizProfileFragment());
+                }else if (tab.getPosition() == 2) {
+                    setFragment(new PaymentFragment());
                 }
             }
 

@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-database:20.0.2'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 
@@ -54,6 +55,11 @@ dependencies {
 
 //Firebase Authentication:
     implementation 'com.google.firebase:firebase-auth:21.0.1'
+
+    //Retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

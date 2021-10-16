@@ -1,5 +1,6 @@
 package com.aariyan.imo_template;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -19,7 +20,14 @@ import com.aariyan.imo_template.Fragment.HomeFragment;
 import com.aariyan.imo_template.Fragment.PrivateGroupFragment;
 import com.aariyan.imo_template.Fragment.PublicGroupFragment;
 import com.aariyan.imo_template.Model.LisModel;
+import com.aariyan.imo_template.Notification.Token;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,13 +40,46 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private CircleImageView profileIcon;
+    private FirebaseAuth userAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userAuth = FirebaseAuth.getInstance();
+
         initUI();
+
+        retrieveToken();
+    }
+
+    private void retrieveToken() {
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        updateToken(token);
+                    }
+                });
+    }
+
+    private void updateToken(String token) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Token");
+
+        Token token1 = new Token(token);
+
+        if (userAuth.getCurrentUser() != null) {
+            databaseReference.child(userAuth.getCurrentUser().getUid()).setValue(token1);
+        }
+
     }
 
     private void initUI() {

@@ -6,10 +6,11 @@ public class QuestionModel {
     private String optionOne,optionTwo,optionThree,optionFour;
     private String answer;
     private String uploaderId;
+    private String status;
 
     public QuestionModel(){}
 
-    public QuestionModel(String id, String categoryId, String subCategoryId, String question, String optionOne, String optionTwo, String optionThree, String optionFour, String answer, String uploaderId) {
+    public QuestionModel(String id, String categoryId, String subCategoryId, String question, String optionOne, String optionTwo, String optionThree, String optionFour, String answer, String uploaderId, String status) {
         this.id = id;
         this.categoryId = categoryId;
         this.subCategoryId = subCategoryId;
@@ -20,6 +21,15 @@ public class QuestionModel {
         this.optionFour = optionFour;
         this.answer = answer;
         this.uploaderId = uploaderId;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getUploaderId() {

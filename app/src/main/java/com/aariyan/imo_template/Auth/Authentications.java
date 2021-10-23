@@ -1,4 +1,4 @@
-package com.aariyan.imo_template.Authentication;
+package com.aariyan.imo_template.Auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,12 +21,11 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.google.firebase.database.DatabaseReference;
 import com.hbb20.CountryCodePicker;
 
 import java.util.concurrent.TimeUnit;
 
-public class Authentication extends AppCompatActivity {
+public class Authentications extends AppCompatActivity {
 
     private CountryCodePicker countryCodePicker;
     private Context context;
@@ -48,7 +47,7 @@ public class Authentication extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
-        context = Authentication.this;
+        context = Authentications.this;
         userAuth = FirebaseAuth.getInstance();
 
         phoneCallback();
@@ -105,7 +104,7 @@ public class Authentication extends AppCompatActivity {
                 mResendToken = token;
 
                 Toast.makeText(context, "OTP sent!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Authentication.this, OTP_verification.class);
+                Intent intent = new Intent(Authentications.this, OTP_verification.class);
                 intent.putExtra("otp", verificationId);
                 intent.putExtra("phone", countryCodePicker.getFullNumberWithPlus());
                 startActivity(intent);

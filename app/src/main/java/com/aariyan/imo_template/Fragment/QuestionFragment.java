@@ -128,9 +128,15 @@ public class QuestionFragment extends Fragment {
                     questionList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         QuestionModel model = dataSnapshot.getValue(QuestionModel.class);
-                        questionList.add(model);
+                        if (model.getStatus().equals("accepted"))
+                            questionList.add(model);
                     }
-                    loadSingleQuestion();
+                    if (questionList.size() > 0) {
+                        loadSingleQuestion();
+                    } else {
+                        Toast.makeText(requireContext(), "No question found!", Toast.LENGTH_SHORT).show();
+                    }
+
                 } else {
                     mainLinearLayout.setVisibility(View.GONE);
                     Toast.makeText(requireContext(), "No Question!", Toast.LENGTH_SHORT).show();
@@ -215,7 +221,7 @@ public class QuestionFragment extends Fragment {
                                     UserModel model = dataSnapshot.getValue(UserModel.class);
                                     uploaderPoints = 5 + Integer.parseInt(model.getUserPoints());
                                 }
-                                Constant.userRef.child(model.getUploaderId()).setValue(""+uploaderPoints);
+                                Constant.userRef.child(model.getUploaderId()).setValue("" + uploaderPoints);
                             }
                         }
 

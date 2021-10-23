@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.aariyan.imo_template.Authentication.Authentication;
-import com.google.firebase.analytics.FirebaseAnalytics;
+
+import com.aariyan.imo_template.Auth.Authentications;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Splash_screen extends AppCompatActivity {
@@ -25,7 +25,7 @@ public class Splash_screen extends AppCompatActivity {
             @Override
             public void run() {
                 if (userAuth.getCurrentUser() == null) {
-                    startActivity(new Intent(Splash_screen.this, Authentication.class));
+                    startActivity(new Intent(Splash_screen.this, Authentications.class));
                 } else if (userAuth.getCurrentUser() != null) {
                     startActivity(new Intent(Splash_screen.this,MainActivity.class));
                 }

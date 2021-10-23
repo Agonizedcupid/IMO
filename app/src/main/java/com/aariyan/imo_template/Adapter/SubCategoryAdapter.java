@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aariyan.imo_template.Activity.QuestionActivity;
 import com.aariyan.imo_template.Constant.Constant;
 import com.aariyan.imo_template.Fragment.QuestionFragment;
 import com.aariyan.imo_template.Fragment.QuizSubCategoryFragment;
@@ -51,14 +52,19 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment fragment = new QuestionFragment();
 
-                Bundle args = new Bundle();
-                args.putString("id", model.getId());
-                fragment.setArguments(args);
+                Intent intent = new Intent(context, QuestionActivity.class);
+                intent.putExtra("id",model.getId());
+                context.startActivity(intent);
 
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainers, fragment).addToBackStack(null).commit();
+//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//                Fragment fragment = new QuestionFragment();
+//
+//                Bundle args = new Bundle();
+//                args.putString("id", model.getId());
+//                fragment.setArguments(args);
+//
+//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainers, fragment).addToBackStack(null).commit();
 
             }
         });

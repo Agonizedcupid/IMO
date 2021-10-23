@@ -1,4 +1,4 @@
-package com.aariyan.imo_template.Authentication;
+package com.aariyan.imo_template.Auth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -84,7 +84,7 @@ public class OTP_verification extends AppCompatActivity {
     }
 
     private void resendOTP() {
-        startActivity(new Intent(OTP_verification.this,Authentication.class));
+        startActivity(new Intent(OTP_verification.this, Authentications.class));
     }
 
     private void numberOTPMOve() {

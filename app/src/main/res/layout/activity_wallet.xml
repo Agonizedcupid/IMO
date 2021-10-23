@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.WalletActivity">
+
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_500"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Wallet"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pointTextBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edit_text_back"
+        android:gravity="center_vertical"
+        android:paddingStart="25dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="5dp"
+        android:text="You Have 100 Points"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+
+        />
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressbar"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:layout_alignParentBottom="true"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Withdraw Money"
+            android:textStyle="italic"
+            android:textSize="16sp"
+            android:textColor="@color/purple_500"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Payment Method"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <RadioButton
+                android:id="@+id/bKashRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="bKash"
+                android:layout_height="wrap_content"/>
+
+            <RadioButton
+                android:id="@+id/paypalRadioButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="PayPal"
+                android:layout_height="wrap_content"/>
+
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/paymentId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_back"
+            android:hint="Enter bKash number or PayPal Id"
+            android:textColor="@android:color/black"
+            android:paddingStart="5dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            >
+
+            <EditText
+                android:id="@+id/pointBoxForWithdrawMoney"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_back"
+                android:hint="Write points here!"
+                android:paddingStart="15dp"
+                android:textColor="@color/black"
+                android:inputType="number"
+                />
+
+            <Button
+                android:id="@+id/withdrawMoneyBtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="Withdraw"
+                />
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private LinearLayout imoWallet;
 
-    private LinearLayout changeName;
+    //private LinearLayout changeName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +43,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void initUI() {
 
-        changeName = findViewById(R.id.changeName);
-        changeName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProfileActivity.this, ChangeNameActivity.class));
-            }
-        });
+//        changeName = findViewById(R.id.changeName);
+//        changeName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(ProfileActivity.this, ChangeNameActivity.class));
+//            }
+//        });
         imoWallet = findViewById(R.id.imoWallet);
         imoWallet.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,13 +36,27 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/rightAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rightOrWrongAnswer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:text="Correct Answer"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="25dp"
-            android:layout_below="@id/rightOrWrongAnswer"
+            android:layout_below="@id/rightAnswer"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="15dp"
             >

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aariyan.imo_template.Constant.Constant;
+import com.aariyan.imo_template.MainActivity;
 import com.aariyan.imo_template.Model.UserModel;
 import com.aariyan.imo_template.ProfileActivity;
 import com.aariyan.imo_template.R;
@@ -82,7 +83,7 @@ public class ChangeNameActivity extends AppCompatActivity {
         Toast.makeText(ChangeNameActivity.this, "Profile Updated!", Toast.LENGTH_LONG).show();
         loadUserInfo();
         progressBar.setVisibility(View.GONE);
-        startActivity(new Intent(ChangeNameActivity.this, ProfileActivity.class));
+        startActivity(new Intent(ChangeNameActivity.this, MainActivity.class));
         finish();
     }
 }

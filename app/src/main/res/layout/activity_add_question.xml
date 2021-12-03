@@ -71,7 +71,103 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <RadioGroup
+                    <!--                    <RadioGroup-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginTop="3dp"-->
+                    <!--                        android:orientation="vertical">-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="horizontal">-->
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:id="@+id/optionOne"-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/optionOneBox"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="40dp"-->
+                    <!--                                android:background="@drawable/edit_text_back"-->
+                    <!--                                android:hint="Write option one here"-->
+                    <!--                                android:paddingStart="10dp"-->
+                    <!--                                android:textColor="@android:color/black"-->
+                    <!--                                android:textSize="16sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="horizontal">-->
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:id="@+id/optionTwo"-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/optionTwoBox"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="40dp"-->
+                    <!--                                android:background="@drawable/edit_text_back"-->
+                    <!--                                android:hint="Write option two here"-->
+                    <!--                                android:paddingStart="10dp"-->
+                    <!--                                android:textColor="@android:color/black"-->
+                    <!--                                android:textSize="16sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="horizontal">-->
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:id="@+id/optionThree"-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/optionThreeBox"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="40dp"-->
+                    <!--                                android:background="@drawable/edit_text_back"-->
+                    <!--                                android:hint="Write option three here"-->
+                    <!--                                android:paddingStart="10dp"-->
+                    <!--                                android:textColor="@android:color/black"-->
+                    <!--                                android:textSize="16sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:orientation="horizontal">-->
+
+                    <!--                            <RadioButton-->
+                    <!--                                android:id="@+id/optionFour"-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/optionFourBox"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="40dp"-->
+                    <!--                                android:background="@drawable/edit_text_back"-->
+                    <!--                                android:hint="Write option four here"-->
+                    <!--                                android:paddingStart="10dp"-->
+                    <!--                                android:textColor="@android:color/black"-->
+                    <!--                                android:textSize="16sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                    </RadioGroup>-->
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
@@ -82,10 +178,16 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <RadioButton
-                                android:id="@+id/optionOne"
+                            <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:text="A"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/optionOneBox"
@@ -102,12 +204,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            >
 
-                            <RadioButton
-                                android:id="@+id/optionTwo"
+                            <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:text="B"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/optionTwoBox"
@@ -124,12 +234,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            >
 
-                            <RadioButton
-                                android:id="@+id/optionThree"
+                            <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:text="C"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/optionThreeBox"
@@ -146,12 +264,20 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            >
 
-                            <RadioButton
-                                android:id="@+id/optionFour"
+                            <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:gravity="center_vertical"
+                                android:layout_marginEnd="15dp"
+                                android:text="D"
+                                android:textColor="@android:color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
 
                             <EditText
                                 android:id="@+id/optionFourBox"
@@ -165,7 +291,54 @@
 
                         </LinearLayout>
 
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Select Answer"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/optionOne"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="A" />
+
+                        <RadioButton
+                            android:id="@+id/optionTwo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="B" />
+
+                        <RadioButton
+                            android:id="@+id/optionThree"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="C" />
+
+                        <RadioButton
+                            android:id="@+id/optionFour"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="D" />
+
                     </RadioGroup>
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -204,14 +377,51 @@
 
                     </LinearLayout>
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:orientation="horizontal"
                         android:layout_marginTop="25dp"
-                        android:text="Select SubCategory"
-                        android:textColor="@android:color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Select SubCategory"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/existRadioBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Exist"
+                                android:layout_marginEnd="10dp"
+                                android:checked="true"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/newRadioBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="New"
+                                />
+
+                        </RadioGroup>
+
+
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"

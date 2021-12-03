@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aariyan.imo_template.Activity.ChangeNameActivity;
 import com.aariyan.imo_template.Constant.Constant;
 import com.aariyan.imo_template.MainActivity;
 import com.aariyan.imo_template.Model.UserModel;
@@ -214,7 +215,8 @@ public class OTP_verification extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             saveDataOnDatabase();
-                            startActivity(new Intent(OTP_verification.this, MainActivity.class));
+                            //startActivity(new Intent(OTP_verification.this, MainActivity.class));
+                            startActivity(new Intent(OTP_verification.this, ChangeNameActivity.class));
                             finish();
                             progressBar.setVisibility(View.GONE);
                         }

@@ -25,6 +25,7 @@ import com.aariyan.imo_template.Interface.APISerrvice;
 import com.aariyan.imo_template.MainActivity;
 import com.aariyan.imo_template.Model.CategoryModel;
 import com.aariyan.imo_template.Model.NotificationModel;
+import com.aariyan.imo_template.Model.PointModel;
 import com.aariyan.imo_template.Model.QuestionModel;
 import com.aariyan.imo_template.Model.SubCategoryModel;
 import com.aariyan.imo_template.Model.UserModel;
@@ -59,6 +60,8 @@ public class AddQuestionActivity extends AppCompatActivity {
     private RadioButton optionOne, optionTwo, optionThree, optionFour;
     private Button addQuestionBtn;
 
+    private RadioButton newRadioBtn,existRadioBtn;
+
     private Spinner spinner, subCategorySpinner;
     private EditText categoryNameBox, subCategoryNameBox;
     private DatabaseReference categoryRef, subCategoryRef, questionRef;
@@ -72,9 +75,10 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     private static String subCategorySpinnerItemSelection = "";
     private static String subCategorySpinnerItemId = "";
+    private static String dummySubCategorySpinnerItemId = "";
     private static String subCategorySpinnerItemParent = "";
 
-    private static String selectedOption = "";
+    private String selectedOption = "";
 
     private ProgressBar progressBar;
     private FirebaseAuth userAuth;
@@ -83,6 +87,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private TextView warningText;
 
     private Context context;
+
 
     //Notification Part:
     APISerrvice apiSerrvice;
@@ -109,6 +114,28 @@ public class AddQuestionActivity extends AppCompatActivity {
         initUI();
         checkPoints();
         loadCategorySpinner();
+
+        checkAdminPoints();
+    }
+
+    private void checkAdminPoints() {
+        Constant.pointRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        PointModel model = dataSnapshot.getValue(PointModel.class);
+                        assert model != null;
+                        Constant.questionPoint = Integer.parseInt(model.getQuestionPoint());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void checkPoints() {
@@ -159,6 +186,8 @@ public class AddQuestionActivity extends AppCompatActivity {
                     spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            existRadioBtn.setChecked(true);
+                            newRadioBtn.setChecked(false);
                             CategoryModel model = list.get(position);
                             categorySpinnerItemSelection = model.getCategoryName();
                             if (model.getCategoryName().equals("New")) {
@@ -214,6 +243,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             SubCategoryModel model = subCategoryList.get(position);
                             subCategorySpinnerItemId = model.getId();
+                            dummySubCategorySpinnerItemId = model.getId();
                             subCategorySpinnerItemParent = model.getParentId();
                             //Toast.makeText(requireContext(), "" + model.getSubCategoryName(), Toast.LENGTH_SHORT).show();
                         }
@@ -244,6 +274,31 @@ public class AddQuestionActivity extends AppCompatActivity {
         mainRelativeLayout = findViewById(R.id.mainRelativeLayout);
         warningText = findViewById(R.id.warningText);
 
+        newRadioBtn = findViewById(R.id.newRadioBtn);
+        existRadioBtn = findViewById(R.id.existRadioBtn);
+        newRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                subCategorySpinner.setVisibility(View.GONE);
+                subCategoryNameBox.setVisibility(View.VISIBLE);
+                existRadioBtn.setChecked(false);
+                newRadioBtn.setChecked(true);
+                subCategorySpinnerItemId = "0";
+            }
+        });
+
+        existRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                subCategorySpinner.setVisibility(View.VISIBLE);
+                subCategoryNameBox.setVisibility(View.GONE);
+                existRadioBtn.setChecked(true);
+                newRadioBtn.setChecked(false);
+                subCategorySpinnerItemId = dummySubCategorySpinnerItemId;
+            }
+        });
+
+
         questionBox = findViewById(R.id.addQuestionBox);
         optionOneBox = findViewById(R.id.optionOneBox);
         optionTwoBox = findViewById(R.id.optionTwoBox);
@@ -268,6 +323,59 @@ public class AddQuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 validation();
+            }
+        });
+
+        optionFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionOne.setChecked(false);
+                optionTwo.setChecked(false);
+                optionThree.setChecked(false);
+                optionFour.setChecked(true);
+
+                selectedOption = optionFourBox.getText().toString();
+                //Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        optionOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionOne.setChecked(true);
+                optionTwo.setChecked(false);
+                optionThree.setChecked(false);
+                optionFour.setChecked(false);
+
+                selectedOption = optionOneBox.getText().toString();
+                //Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        optionTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionOne.setChecked(false);
+                optionTwo.setChecked(true);
+                optionThree.setChecked(false);
+                optionFour.setChecked(false);
+
+                selectedOption = optionTwoBox.getText().toString();
+                //Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        optionThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                optionOne.setChecked(false);
+                optionTwo.setChecked(false);
+                optionThree.setChecked(true);
+                optionFour.setChecked(false);
+
+                selectedOption = optionThreeBox.getText().toString();
+                //Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -350,7 +458,7 @@ public class AddQuestionActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("NOTIFICATION_TEST", ""+error.getMessage());
+                Log.d("NOTIFICATION_TEST", "" + error.getMessage());
             }
         });
     }
@@ -448,53 +556,57 @@ public class AddQuestionActivity extends AppCompatActivity {
             return;
         }
 
-        optionOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                optionOne.setChecked(true);
-                optionTwo.setChecked(false);
-                optionThree.setChecked(false);
-                optionFour.setChecked(false);
+//        optionOne.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                optionOne.setChecked(true);
+//                optionTwo.setChecked(false);
+//                optionThree.setChecked(false);
+//                optionFour.setChecked(false);
+//
+//                selectedOption = optionOneBox.getText().toString();
+//                Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        optionTwo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                optionOne.setChecked(false);
+//                optionTwo.setChecked(true);
+//                optionThree.setChecked(false);
+//                optionFour.setChecked(false);
+//
+//                selectedOption = optionTwoBox.getText().toString();
+//                Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        optionThree.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                optionOne.setChecked(false);
+//                optionTwo.setChecked(false);
+//                optionThree.setChecked(true);
+//                optionFour.setChecked(false);
+//
+//                selectedOption = optionThreeBox.getText().toString();
+//                Toast.makeText(AddQuestionActivity.this, ""+selectedOption, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-                selectedOption = optionOneBox.getText().toString();
-            }
-        });
-
-        optionTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                optionOne.setChecked(false);
-                optionTwo.setChecked(true);
-                optionThree.setChecked(false);
-                optionFour.setChecked(false);
-
-                selectedOption = optionTwoBox.getText().toString();
-            }
-        });
-
-        optionThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                optionOne.setChecked(false);
-                optionTwo.setChecked(false);
-                optionThree.setChecked(true);
-                optionFour.setChecked(false);
-
-                selectedOption = optionThreeBox.getText().toString();
-            }
-        });
-
-        optionFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                optionOne.setChecked(false);
-                optionTwo.setChecked(false);
-                optionThree.setChecked(false);
-                optionFour.setChecked(true);
-
-                selectedOption = optionFourBox.getText().toString();
-            }
-        });
+//        optionFour.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                optionOne.setChecked(false);
+//                optionTwo.setChecked(false);
+//                optionThree.setChecked(false);
+//                optionFour.setChecked(true);
+//
+//                selectedOption = optionFourBox.getText().toString();
+//                Toast.makeText(AddQuestionActivity.this, "Called: "+selectedOption, Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         if (selectedOption.equals("")) {
             Toast.makeText(context, "Please select a correct answer!", Toast.LENGTH_SHORT).show();
@@ -512,7 +624,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 optionTwoBox.getText().toString(),
                 optionThreeBox.getText().toString(),
                 optionFourBox.getText().toString(),
-                selectedOption,
+                "" + selectedOption,
                 userAuth.getCurrentUser().getUid(),
                 "pending"
         );
@@ -549,7 +661,8 @@ public class AddQuestionActivity extends AppCompatActivity {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         UserModel model = dataSnapshot.getValue(UserModel.class);
                         int points = Integer.parseInt(model.getUserPoints());
-                        points = points - 10;
+                        //points = points - 10;
+                        points = points - Constant.questionPoint;
                         Constant.userRef.child(userAuth.getCurrentUser().getUid()).child("userPoints").setValue("" + points);
 
                         //progressBar.setVisibility(View.GONE);

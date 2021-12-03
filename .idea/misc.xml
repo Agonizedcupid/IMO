@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/add_icon.xml" value="0.2890625" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/bottom_navigation_background.xml" value="0.2890625" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/gradient_main_background.xml" value="0.2890625" />
+        <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/drawable/single_gradient.xml" value="0.19791666666666666" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_add_question.xml" value="0.27291666666666664" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_authentication.xml" value="0.27291666666666664" />
         <entry key="..\:/Projects/Android/IMO_Template/app/src/main/res/layout/activity_change_name.xml" value="0.25885416666666666" />

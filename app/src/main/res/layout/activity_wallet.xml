@@ -56,7 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="15dp"
+        android:padding="15dp"
+        android:background="@drawable/single_gradient"
         android:layout_alignParentBottom="true"
         >
 
@@ -66,7 +67,9 @@
             android:text="Withdraw Money"
             android:textStyle="italic"
             android:textSize="16sp"
-            android:textColor="@color/purple_500"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
             />
 
         <TextView
@@ -74,7 +77,7 @@
             android:layout_height="wrap_content"
             android:text="Payment Method"
             android:textSize="14sp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/white"
             />
 
         <RadioGroup
@@ -88,6 +91,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="bKash"
+                android:backgroundTint="@color/white"
+                android:buttonTint="@color/white"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"/>
 
             <RadioButton
@@ -95,6 +101,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:text="PayPal"
+                android:backgroundTint="@color/white"
+                android:buttonTint="@color/white"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"/>
 
         </RadioGroup>

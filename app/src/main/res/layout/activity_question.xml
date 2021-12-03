@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_main_background"
     tools:context=".Activity.QuestionActivity">
 
     <!--Toolbar start-->
@@ -39,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="50dp"
         android:padding="15dp"
         android:layout_below="@id/toolbar"
         >
@@ -48,9 +50,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Q: What's Your Name?"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
+            android:background="@drawable/single_gradient"
+            android:padding="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
             />
 
         <LinearLayout
@@ -70,8 +77,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:background="@drawable/single_gradient"
+                    android:padding="10dp"
                     android:orientation="horizontal"
                     >
 
@@ -80,24 +87,25 @@
                         android:layout_height="wrap_content"
                         android:text="(A)"
                         android:textStyle="normal"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/aclonica"
                         />
 
                     <TextView
                         android:id="@+id/answerOne"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Answer One"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="normal"
                         android:layout_gravity="center_vertical"
-                        android:gravity="center_vertical"
                         android:layout_marginStart="5dp"
-                        />
+                        android:gravity="center_vertical"
+                        android:text="Answer One"
+                        android:fontFamily="@font/aclonica"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:textStyle="normal" />
 
                 </LinearLayout>
 
@@ -105,8 +113,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:background="@drawable/single_gradient"
+                    android:padding="10dp"
                     android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     >
@@ -116,10 +124,11 @@
                         android:layout_height="wrap_content"
                         android:text="(B)"
                         android:textStyle="normal"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/aclonica"
                         />
 
                     <TextView
@@ -127,8 +136,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Answer Two"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:fontFamily="@font/aclonica"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
                         android:textStyle="normal"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
@@ -140,7 +150,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="35dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -150,8 +160,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:background="@drawable/single_gradient"
+                    android:padding="10dp"
                     android:orientation="horizontal"
                     >
 
@@ -160,19 +170,21 @@
                         android:layout_height="wrap_content"
                         android:text="(C)"
                         android:textStyle="normal"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/aclonica"
                         />
 
                     <TextView
                         android:id="@+id/answerThree"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/aclonica"
                         android:text="Answer Three"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
                         android:textStyle="normal"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
@@ -185,8 +197,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingTop="7dp"
-                    android:paddingBottom="7dp"
+                    android:background="@drawable/single_gradient"
+                    android:padding="10dp"
                     android:orientation="horizontal"
                     android:layout_marginStart="10dp"
                     >
@@ -196,10 +208,11 @@
                         android:layout_height="wrap_content"
                         android:text="(D)"
                         android:textStyle="normal"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/white"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
+                        android:fontFamily="@font/aclonica"
                         />
 
                     <TextView
@@ -207,8 +220,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Answer Four"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
+                        android:fontFamily="@font/aclonica"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
                         android:textStyle="normal"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
